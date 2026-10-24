@@ -1,0 +1,123 @@
+{
+  "BUILDERBENCH_INCUMBENT_SOURCES": [
+    "base_scripts/builderbench/potential/builderbench_potential_base_ground3_block_only.sh",
+    "base_scripts/builderbench/base/builderbench_base_block_only.sh",
+    "base_scripts/runners/builderbench_rev_sac.sh",
+    "agents/potential_empowerment.py",
+    "main_potential.py",
+    "utils/datasets.py"
+  ],
+  "BUILDERBENCH_INCUMBENT_SOURCE_SHA256": {
+    "base_scripts/builderbench/potential/builderbench_potential_base_ground3_block_only.sh": "3b2f4dc0a5f87c53f7ccfdca36fc720c6488e131a1a560518402db5bfe8ebdf9",
+    "base_scripts/builderbench/base/builderbench_base_block_only.sh": "d9ddb0cefd02f5709c53ccc881a7f9c4e2b28e600d1a491d17fd0cf2bae72a08",
+    "base_scripts/runners/builderbench_rev_sac.sh": "040a35458c6acfb8c019698d92458c43552781a2f527f075db8840ef74846d7a",
+    "agents/potential_empowerment.py": "7877af80183036443ae23a7a802ded3410a8ce3f5415d7b4bec8f1b64fe50d26",
+    "main_potential.py": "beed00b541298cd787b167d800651dce0706739a0db9143e6efa68582268b17f",
+    "utils/datasets.py": "570f68e7b817f75efbfaf437d983e1762394997e69f00ce7b12faeb67dd5122c"
+  },
+  "BUILDERBENCH_INTENTIONAL_DEVIATIONS": {
+    "skill_mean_symmetry_break": {
+      "reference": 0.0,
+      "warp_default": 0.2,
+      "reason": "a per-skill action-mean symmetry break"
+    },
+    "encoder_temporal_reference": {
+      "reference": "phi(future_from_activation) - phi(activation)",
+      "warp_default": "phi(future_from_current) - phi(current)",
+      "reason": "the encoder displacement starts at the current state"
+    },
+    "representation_archive_layout": {
+      "reference": "one environment, 100000 skill-on rows, future = idx + k in the same episode",
+      "warp_default": "bag of the representation_episodes most recent completed episodes from any lane; future = row + k inside the stored episode; only skill-on rows are sampled",
+      "reason": "the archive stores whole trajectories"
+    },
+    "representation_archive_capacity": {
+      "reference": "100000 skill-on rows",
+      "warp_default": "3334 complete episodes = 1000200 skill-on rows",
+      "reason": "a one-million-row representation archive"
+    },
+    "policy_replay_capacity": {
+      "reference": 1000000,
+      "warp_default": 10000000,
+      "reason": "the policy replay holds the full 10M-transition run"
+    },
+    "staggered_resets": {
+      "reference": false,
+      "warp_default": true,
+      "reason": "spread episode boundaries across the vector"
+    },
+    "policy_update_sample_ratio": {
+      "reference": 32.0,
+      "warp_default": 4.0,
+      "reason": "equal-wall-time throughput/learning tradeoff for the vectorized SAC"
+    },
+    "potential_replay_semantics": {
+      "reference": "strict-prior anchor replacement; achieved label from anchor to current; zero-skill value queried at the stored anchor",
+      "warp_default": "strict-prior anchor replacement (legacy_geometric); achieved label from anchor to current; zero-skill value queried at the stored anchor",
+      "reason": "geometric anchor replay outperformed pointwise variants on visitation and displacement"
+    }
+  },
+  "ANTSOCCER_INCUMBENT_SOURCES": [
+    "base_scripts/antsoccer/potential/antsoccer_potential_base_closer_ball_only.sh",
+    "base_scripts/antsoccer/potential/antsoccer_potential_base_center_ball_only.sh",
+    "base_scripts/runners/antsoccer_rev_sac.sh",
+    "src/empowerment/agents/potential_empowerment.py",
+    "src/empowerment/utils/datasets.py",
+    "src/empowerment/envs/ogbench/presets.py"
+  ],
+  "ANTSOCCER_INCUMBENT_SOURCE_SHA256": {
+    "base_scripts/antsoccer/potential/antsoccer_potential_base_closer_ball_only.sh": "adbb50a5d89dda61f3fce6f24b2a06250b411b84c821f42e3f1a4fabe1d536e8",
+    "base_scripts/antsoccer/potential/antsoccer_potential_base_center_ball_only.sh": "e8869f9e489440d0305fe7fdba232e3d4c8796595c883bf792cc4d93d420c838",
+    "base_scripts/runners/antsoccer_rev_sac.sh": "50a872ec8d3b3f340b90e772aec9d10ef268f8846f60a5b31166c85809cc495e",
+    "src/empowerment/agents/potential_empowerment.py": "6cc5823b4412d89d87fc0323fc221ec86dc27947896ef36898ddbacc0a0e8e27",
+    "src/empowerment/utils/datasets.py": "25de588aaabd2005b8c508341eaab804f97e7817ea3b804ceaf2373eccf06605",
+    "src/empowerment/envs/ogbench/presets.py": "6b67b7031f8ae91a1936a9d128cfc1d2b3b56b8853b653f9dddf8a2f24a2af38"
+  },
+  "ANTSOCCER_INTENTIONAL_DEVIATIONS": {
+    "skill_mean_symmetry_break": {
+      "reference": 0.0,
+      "warp_default": 0.2,
+      "reason": "a per-skill action-mean symmetry break"
+    },
+    "encoder_temporal_reference": {
+      "reference": "phi(future_from_activation) - phi(activation)",
+      "warp_default": "phi(future_from_current) - phi(current)",
+      "reason": "the encoder displacement starts at the current state"
+    },
+    "representation_archive_layout": {
+      "reference": "100 environments, 100000 skill-on rows, future by (episode_id, step + k) lookup",
+      "warp_default": "bag of the representation_episodes most recent completed episodes from any lane; future = row + k inside the stored episode; only skill-on rows are sampled",
+      "reason": "the archive stores whole trajectories"
+    },
+    "representation_archive_capacity": {
+      "reference": "100000 skill-on rows",
+      "warp_default": "3334 complete episodes = 1000200 skill-on rows",
+      "reason": "a one-million-row representation archive"
+    },
+    "policy_replay_capacity": {
+      "reference": 1000000,
+      "warp_default": 10000000,
+      "reason": "the policy replay holds the full 10M-transition run"
+    },
+    "staggered_resets": {
+      "reference": false,
+      "warp_default": true,
+      "reason": "spread episode boundaries across the vector"
+    },
+    "policy_update_sample_ratio": {
+      "reference": 128.0,
+      "warp_default": 4.0,
+      "reason": "equal-wall-time throughput/learning tradeoff for the vectorized SAC"
+    },
+    "potential_replay_semantics": {
+      "reference": "strict-prior anchor replacement; achieved label from anchor to current; zero-skill value queried at the stored anchor",
+      "warp_default": "strict-prior anchor replacement (legacy_geometric); achieved label from anchor to current; zero-skill value queried at the stored anchor",
+      "reason": "geometric anchor replay outperformed pointwise variants on visitation and displacement"
+    },
+    "encoder_training_noise": {
+      "reference": 0.05,
+      "warp_default": 0.1,
+      "reason": "AntSoccer ball-only encoder; the 42-state Ant comparison keeps 0.05"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+# Python and tools
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.cache/
+.ipynb_checkpoints/
+.coverage
+.coverage.*
+htmlcov/
+MUJOCO_LOG.TXT
+
+# Editors and OS
+.DS_Store
+.idea/
+*.swp
+*.swo
+*~
+
+# Local cluster settings
+.env
+
+# Default run directory (recipes' run_dir)
+artifacts/

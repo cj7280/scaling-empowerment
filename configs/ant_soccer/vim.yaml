@@ -1,0 +1,38 @@
+engine: baseline
+seeds:
+- 0
+- 1
+- 2
+description: 'AntSoccer VIM baseline with the PPO controller'
+settings:
+  environment: ant_soccer
+  reset_preset: closer_ball
+  method: vim
+  horizon: 30
+  total_env_steps: 500000000
+  run_dir: artifacts/runs/unassigned
+  seed: 0
+  num_envs: 256
+  rollout_steps: 80
+  episode_steps: 400
+  gamma: 0.99
+  eval_every_updates: 100
+  max_updates: 0
+  resume: false
+  config_only: false
+  estimator:
+    hidden_dim: 512
+    scalar_hidden_dim: 256
+    hidden_layers: 3
+    learning_rate: 0.0003
+    buffer_size: 10000
+    batch_size: 1024
+    replay_passes: 10
+  checkpoint_keep: 2
+  ppo:
+    learning_rate: 0.001
+    entropy_coefficient: 0.01
+    normalize_actor_observations: false
+    anneal_learning_rate: false
+    normalization_epsilon: 1.0e-08
+    normalization_clip: 10.0

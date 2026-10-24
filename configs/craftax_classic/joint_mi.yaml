@@ -1,0 +1,10 @@
+# Scientific settings; cluster settings belong in .env.
+engine: pqn
+seeds:
+- 0
+- 1
+- 2
+description: 'Craftax-Classic SEE with the joint-MI classifier trained on live rollouts'
+settings:
+  encoder_data_source: live
+extends: see.yaml

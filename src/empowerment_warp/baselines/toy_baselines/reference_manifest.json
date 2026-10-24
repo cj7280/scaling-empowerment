@@ -1,0 +1,88 @@
+{
+  "adaptations": [
+    "Move original toy modules into empowerment_warp.baselines.toy_baselines",
+    "Replace absolute package imports with local imports",
+    "Extract only MLP/default_init and W&B logging helpers from shared empowerment utilities",
+    "Use bundled publication media helpers; font paths may be set in .env and invalid fonts raise",
+    "Optional max_updates bounds one invocation while retaining the saved env_steps budget and evaluation thresholds; the default executes the original full loop",
+    "Public run and checkpoint evaluation pin jax_threefry_partitionable=False before any toy RNG, matching the JAX 0.4.26 saved run default"
+  ],
+  "run_manifest_source_root": "snapshots/c6146fd2ffd5f273",
+  "snapshot_content_sha256": "c6146fd2ffd5f27316430bd9ac4d018b57ccef83c7045a62736de34b2609d05c",
+  "snapshot_git_commit": "84c37839e6c569149f2831a9c16e27ac1e7d1801",
+  "source_files": {
+    "behavior.py": {
+      "path": "src/empowerment/baselines/latent_gce/behavior.py",
+      "sha256": "ad714bf6813e185ea93ececf152aad011f99082d6a1123695735f556f05eed20"
+    },
+    "checkpoint.py": {
+      "path": "src/empowerment/baselines/latent_gce/checkpoint.py",
+      "sha256": "d2d3a32749cfea8f82b6c344626fe9320f5241adc005d1819d6fd8db665e4d7b"
+    },
+    "config.py": {
+      "path": "src/empowerment/baselines/latent_gce/config.py",
+      "sha256": "d908deac04193bdaa0e2f76baafa2ae7b5a5e8d0a1f32b5df0801f7e170560d6"
+    },
+    "envs.py": {
+      "path": "src/empowerment/baselines/latent_gce/envs.py",
+      "sha256": "1d31585c1555a56e29a66ee13c093e4c409c39ce7d26cfd7dd5447a7435e635f"
+    },
+    "evaluation.py": {
+      "path": "src/empowerment/baselines/latent_gce/evaluation.py",
+      "sha256": "89e2ce847c6134331ba72060a3ff768d4d4f5892629c169a2330c6c878c615b5"
+    },
+    "fonts.py": {
+      "path": "src/empowerment/utils/rendering/visualization.py",
+      "selected_symbols": [
+        "_load_overlay_font"
+      ],
+      "sha256": "3b1cd8dcd86a3de215dbc91c369891f729fd09ae93635b98b10e39780ada4aba"
+    },
+    "gce.py": {
+      "path": "src/empowerment/baselines/latent_gce/gce.py",
+      "sha256": "da3fbb3cd85200269dfe36363f7ecad44faeda3f9fc990158860beee35c0d7e5"
+    },
+    "networks.py": {
+      "path": "src/empowerment/utils/networks.py",
+      "selected_symbols": [
+        "default_init",
+        "MLP"
+      ],
+      "sha256": "43d7b80ba62cb323ec42f0ab84c0b2a8173dc7ca5e8ca038ca252b060d9025a1"
+    },
+    "plotting.py": {
+      "path": "src/empowerment/baselines/latent_gce/plotting.py",
+      "sha256": "06867183001c3ffe6a50b7968f630213c269b8c011180c7fe673fad7a1f27189"
+    },
+    "ppo.py": {
+      "path": "src/empowerment/baselines/latent_gce/ppo.py",
+      "sha256": "db87e8df7aab2fdd764e2acd8ca4a3d17775c2177a04e18c347a2de5e08b43ed"
+    },
+    "probes.py": {
+      "path": "src/empowerment/baselines/latent_gce/probes.py",
+      "sha256": "57057c53554c0990f436f16007d297b10194dd326fc5d6963bea7b72e7b005fb"
+    },
+    "replay.py": {
+      "path": "src/empowerment/baselines/latent_gce/replay.py",
+      "sha256": "7c67bb3947d92dda6396c3cc2c96edc6d39f4c742dd76dfccae1323d5c7946fd"
+    },
+    "runner.py": {
+      "path": "src/empowerment/baselines/latent_gce/runner.py",
+      "sha256": "f57c752c1dfa36acdb7f00a7acb8f64ec3ed64d94de9815285a18d66ec934470"
+    },
+    "tracking.py": {
+      "path": "src/empowerment/utils/metrics/logging.py",
+      "selected_symbols": [
+        "record_wandb_failure",
+        "safe_wandb_finish",
+        "safe_wandb_log",
+        "write_wandb_status"
+      ],
+      "sha256": "337039a50ad7719434d54dddd24854d23b4ada6f3805d12c7bf6ed5f4d4ca255"
+    },
+    "vim.py": {
+      "path": "src/empowerment/baselines/latent_gce/vim.py",
+      "sha256": "530ad837a7c18fd7fddc6574284c6f43ef3e46268184fd14f700a579658e1f04"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Scientific settings; cluster settings belong in .env.
+engine: sac
+seeds:
+- 0
+- 1
+- 2
+description: 'Ant SEE with the conditional-MI classifier (skills branched from a shared anchor)'
+settings:
+  branch_live_two_phase: true
+  skill_start_mode: marginal_branch
+extends: see.yaml

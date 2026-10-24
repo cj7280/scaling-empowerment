@@ -1,0 +1,66 @@
+engine: toy_baseline
+seeds:
+- 0
+- 1
+- 2
+description: 'Ball-in-box VIM toy baseline'
+settings:
+  config_only: false
+  env_steps: 301200
+  environment:
+    action_dim: 2
+    action_limit: 1.0
+    episode_steps: 100
+    gamma: 0.95
+    horizon: 12
+    name: ball_in_box
+    observation_dim: 2
+    probe_trace_steps: 24
+  estimator:
+    batch_size: 1024
+    buffer_size: 10000
+    hidden_dim: 512
+    hidden_layers: 3
+    learning_rate: 0.0003
+    replay_passes: 10
+    scalar_hidden_dim: 256
+  evaluation:
+    deterministic_episodes: 5
+    grid_bins: 65
+    interval_env_steps: 100000
+    media_interval_env_steps: 500000
+    samples_per_anchor: 128
+    stochastic_episodes: 5
+  gce:
+    channel_power: 1.0
+    water_filling_max_iterations: 10000
+    water_filling_tolerance: 0.001
+  method: vim
+  mode: controller
+  output_dir: artifacts/runs/unassigned
+  ppo:
+    adam_epsilon: 1.0e-05
+    clip_epsilon: 0.2
+    entropy_coefficient: 0.01
+    gae_lambda: 0.95
+    hidden_dim: 256
+    hidden_layers: 2
+    learning_rate: 0.001
+    max_grad_norm: 0.5
+    normalize_actor_observations: false
+    num_envs: 5
+    num_minibatches: 4
+    rollout_steps: 1000
+    update_epochs: 4
+    value_coefficient: 0.5
+  resume: ''
+  seed: 0
+  vim:
+    beta: 1.0
+    log_std_max: 2.0
+    log_std_min: -5.0
+    source_initial_std: 1.0
+  wandb_group: toy-baselines
+  wandb_mode: offline
+  wandb_name: ''
+  wandb_project: empowerment-warp

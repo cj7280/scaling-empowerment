@@ -1,0 +1,4 @@
+extends: see.yaml
+description: 'Craftax-Classic SEE that resets recurrent memory at the potential-to-skill switch'
+settings:
+  pqn_preserve_memory_at_switch: false

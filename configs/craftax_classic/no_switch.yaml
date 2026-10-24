@@ -1,0 +1,14 @@
+# Scientific settings; cluster settings belong in .env.
+engine: pqn
+seeds:
+- 0
+- 1
+- 2
+description: 'Craftax-Classic SEE without policy switching: a quarter of episodes run the potential policy throughout, the rest one skill from reset'
+settings:
+  encoder_data_source: branches
+  encoder_branch_steps: 900
+  keep_checkpoints: 0
+  potential_lane_fraction: 0.25
+  potential_steps: 0
+extends: see.yaml

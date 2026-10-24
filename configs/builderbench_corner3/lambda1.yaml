@@ -1,0 +1,11 @@
+# Scientific settings; cluster settings belong in .env.
+engine: sac
+seeds:
+- 0
+- 1
+- 2
+description: 'BuilderBench corner3 SEE with a fixed lambda = 1 (no lambda anneal)'
+settings:
+  reward_partition_anneal_end_steps: 0
+  reward_partition_anneal_start_steps: 0
+extends: see.yaml

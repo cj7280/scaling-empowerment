@@ -1,0 +1,81 @@
+{
+  "config.py": {
+    "source": "empowerment/src/empowerment/baselines/latent_gce/config.py",
+    "sha256": "d908deac04193bdaa0e2f76baafa2ae7b5a5e8d0a1f32b5df0801f7e170560d6",
+    "selected_symbols": [
+      "EnvironmentConfig",
+      "PPOConfig",
+      "EstimatorConfig",
+      "GCEConfig",
+      "VIMModelConfig",
+      "optimizer_kwargs"
+    ],
+    "changes": "Import relocation; PPO simulator-specific collector omitted, env state annotation generalized."
+  },
+  "gce.py": {
+    "source": "empowerment/src/empowerment/baselines/latent_gce/gce.py",
+    "sha256": "da3fbb3cd85200269dfe36363f7ecad44faeda3f9fc990158860beee35c0d7e5",
+    "selected_symbols": [
+      "water_filling_from_singular_values",
+      "channel_singular_values"
+    ],
+    "changes": "Import relocation; PPO simulator-specific collector omitted, env state annotation generalized. The matrix estimator (LatentGCENetwork, create_gce_train_state, prediction_errors, make_gce_train_step, capacity_from_observations) is omitted because no recipe uses it; the vector estimator keeps the water filling."
+  },
+  "vim.py": {
+    "source": "empowerment/src/empowerment/baselines/latent_gce/vim.py",
+    "sha256": "530ad837a7c18fd7fddc6574284c6f43ef3e46268184fd14f700a579658e1f04",
+    "selected_symbols": [
+      "_tanh_log_prob",
+      "AutoregressiveGaussian",
+      "SourceValueNetwork",
+      "DecoderNetwork",
+      "create_vim_train_states",
+      "rollout_successor_observations",
+      "vim_diagnostics",
+      "make_vim_train_step",
+      "empowerment_from_observations"
+    ],
+    "changes": "FixedUniformSourceValue (method vim_uniform) removed because no recipe uses it. Import relocation and target-width initialization; autoregressive likelihood and sampling use parameter-broadcast Flax scans instead of unrolled Python loops. Parameter, output, gradient and RNG parity: tests/test_gce_vim_scans.py."
+  },
+  "replay.py": {
+    "source": "empowerment/src/empowerment/baselines/latent_gce/replay.py",
+    "sha256": "7c67bb3947d92dda6396c3cc2c96edc6d39f4c742dd76dfccae1323d5c7946fd",
+    "selected_symbols": null,
+    "changes": "Import relocation and target-width allocation; replay passes use a JAX scan with unchanged key splitting, update cadence and final-pass metrics. Parity: tests/test_gce_vim_scans.py."
+  },
+  "ppo.py": {
+    "source": "empowerment/src/empowerment/baselines/latent_gce/ppo.py",
+    "sha256": "db87e8df7aab2fdd764e2acd8ca4a3d17775c2177a04e18c347a2de5e08b43ed",
+    "selected_symbols": [
+      "ObservationNormState",
+      "RolloutBatch",
+      "ControllerState",
+      "ActorCritic",
+      "create_ppo_train_state",
+      "empty_observation_norm",
+      "_update_observation_norm",
+      "normalize_observations",
+      "calculate_gae",
+      "make_ppo_update",
+      "policy_action"
+    ],
+    "changes": "Import relocation and generic controller state. Deviations: tanh-squashed controller, stored pre-tanh actions with stable Jacobian-corrected log densities, fresh reparameterized squashed entropy in PPO, and matching evaluation; continuing-objective GAE bootstraps timeouts from final pre-reset observations, cuts traces at every reset, and uses zero bootstrap for true termination. Controller state also checkpoints training coverage grids and episode start positions for ablation-matched exploration metrics. Estimator/probe semantics unchanged. Numeric regressions: tests/test_gce_vim_squashed_ppo.py and tests/test_gce_vim_timeout_exploration.py."
+  },
+  "networks.py": {
+    "source": "empowerment/src/empowerment/utils/networks.py",
+    "sha256": "43d7b80ba62cb323ec42f0ab84c0b2a8173dc7ca5e8ca038ca252b060d9025a1",
+    "selected_symbols": [
+      "default_init",
+      "MLP"
+    ],
+    "changes": "Import relocation; PPO simulator-specific collector omitted, env state annotation generalized."
+  },
+  "probes.py": {
+    "source": "empowerment/src/empowerment/baselines/latent_gce/probes.py",
+    "sha256": "57057c53554c0990f436f16007d297b10194dd326fc5d6963bea7b72e7b005fb",
+    "selected_symbols": [
+      "uniform_actions"
+    ],
+    "changes": "Import relocation; PPO simulator-specific collector omitted, env state annotation generalized."
+  }
+}

@@ -1,0 +1,11 @@
+# Scientific settings; cluster settings belong in .env.
+engine: sac
+seeds:
+- 0
+- 1
+- 2
+description: 'BuilderBench corner3 SEE with a pair-MLP classifier instead of the difference form'
+settings:
+  branch_live_two_phase: false
+  pair_form: pair_mlp
+extends: see.yaml

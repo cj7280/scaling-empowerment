@@ -1,0 +1,95 @@
+# Scientific settings; cluster settings belong in .env.
+engine: sac
+seeds:
+- 0
+- 1
+- 2
+- 3
+- 4
+description: 'Ant SEE reference recipe'
+settings:
+  achieved_skill_relabel_effective_beta: 0.99
+  achieved_skill_relabel_fraction: 1.0
+  achieved_skill_relabel_min_norm: 0.0
+  achieved_skill_relabel_min_prob: 0.06666666666666667
+  achieved_skill_relabel_outcome: discounted
+  achieved_skill_relabel_samples: 8
+  achieved_skill_relabel_weight_max: 3.0
+  achieved_skill_relabel_weight_mode: effective_number
+  achieved_skill_relabeling: true
+  actor_final_scale: 0.0
+  actor_layer_norm: false
+  algorithm: potential
+  allow_cpu: false
+  allow_reference_deviation: true
+  allow_unpromoted_physics: true
+  antsoccer_preset: past_center_ball
+  batch_size: 1024
+  branch_phase_groups: 0
+  branch_targets_per_anchor: 1
+  branch_transitions_to_policy_replay: false
+  checkpoint_every_segments: 250
+  clip_discrete_reward: true
+  continuous_reward_normalization: sampled_infonce
+  continuous_reward_temperature: true
+  critic_final_scale: 1.0
+  critic_layer_norm: true
+  critic_tau: 0.02
+  discount: 0.99
+  discrete_reward_softmax: true
+  discrete_skill_library: auto
+  discrete_skills: false
+  encoder_layer_norm: true
+  encoder_objective: forward_infonce
+  encoder_obs_mode: full
+  encoder_skill_source: commanded
+  encoder_target_tau: 0.99
+  encoder_temperature: 0.1
+  encoder_updates_per_chunk: 16
+  environment: ant
+  episode_length: 400
+  future_gamma: 0.99
+  hidden_dims:
+  - 512
+  - 512
+  keep_checkpoints: 2
+  live_potential_only: false
+  log_every_segments: 10
+  max_future_steps: 400
+  max_train_seconds: null
+  num_envs: 2048
+  num_skills: 30
+  pair_form: difference
+  phi_noise_std: 0.05
+  phi_norm_cap: 0.0
+  potential_lane_fraction: 0.0
+  potential_replay_mode: legacy_geometric
+  potential_reward_reference: anchor
+  potential_reward_scale: 1.0
+  potential_steps: 100
+  progress_eval_every_env_steps: 50000000
+  random_potential_switch_max_steps: 0
+  recipe_id: empowerment:ant_potential_base_antsoccer_standard_42_state
+  replace_skill_zero_reward_with_random_value: true
+  replay_capacity: 10000000
+  representation_episodes: 3334
+  reward_encoder: live
+  reward_partition_anneal_end_steps: 400000000
+  reward_partition_anneal_start_steps: 150000000
+  rollout_steps: 8
+  run_dir: artifacts/runs/unassigned
+  sample_hindsight_anchors: true
+  seed: 0
+  separate_skill0_actor: true
+  separate_skill0_critic: true
+  skill0_value_num_skills: 8
+  skill_dim: 2
+  skill_mean_init_std: 0.2
+  skill_start_mode: two_phase
+  staggered_resets: true
+  state_dependent_std: true
+  target_entropy: 0.0
+  total_env_steps: 500000000
+  updates_per_chunk: 64
+  use_anchor_in_critic: true
+  use_anchor_in_policy: true

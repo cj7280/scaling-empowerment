@@ -1,0 +1,59 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "empowerment-warp"
+version = "0.1.0"
+description = "GPU-native empowerment research with MJX-Warp and JAX environments"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "craftax==1.5.0",
+  "distrax>=0.1.7,<0.2",
+  "flax>=0.12,<0.13",
+  "jax[cuda12]==0.10.2",
+  "mujoco==3.11.0",
+  "mujoco-mjx[warp]==3.11.0",
+  "numpy>=2.0",
+  "optax>=0.2.6,<0.3",
+  "orbax-checkpoint>=0.11.30,<0.12",
+  "Pillow>=13,<14",
+  "imageio>=2.37,<3",
+  "imageio-ffmpeg>=0.6,<0.7",
+  "matplotlib>=3.10,<3.11",
+  "tyro>=0.9",
+  "PyYAML>=6,<7",
+  "wandb>=0.22,<0.23",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8.0",
+]
+
+[project.scripts]
+empowerment-warp = "empowerment_warp.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/empowerment_warp"]
+
+[tool.hatch.build]
+include = [
+  "src/empowerment_warp/**/*.py",
+  "src/empowerment_warp/training/sac/reference_provenance.json",
+  "src/empowerment_warp/_vendor/**",
+  "src/empowerment_warp/training/baselines/reference_manifest.json",
+  "src/empowerment_warp/training/baselines/LICENSE",
+  "src/empowerment_warp/baselines/toy_baselines/LICENSE",
+  "src/empowerment_warp/baselines/toy_baselines/reference_manifest.json",
+  "src/empowerment_warp/envs/builderbench/assets/*",
+  "src/empowerment_warp/envs/builderbench/tasks/*",
+  "src/empowerment_warp/envs/builderbench/xmls/*",
+  "src/empowerment_warp/envs/locomotion/assets/*",
+  "src/empowerment_warp/envs/locomotion/LICENSE",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

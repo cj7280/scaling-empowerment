@@ -1,0 +1,13 @@
+# Scientific settings; cluster settings belong in .env.
+engine: sac
+seeds:
+- 0
+- 1
+- 2
+description: 'BuilderBench corner3 SEE without policy switching: a quarter of episodes run the potential policy throughout, the rest one skill from reset'
+settings:
+  branch_live_two_phase: false
+  potential_lane_fraction: 0.25
+  potential_steps: 0
+  representation_episodes: 2501
+extends: see.yaml
